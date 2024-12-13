@@ -1,6 +1,7 @@
 package com.finalproject.finalproject.entity;
 
 import com.finalproject.finalproject.enums.TripStatus;
+import com.finalproject.finalproject.enums.FlightStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,14 +23,18 @@ public class Flights {
     private Employer employerId;
 
     @Column(name = "MAX_WEIGHT")
-    private Integer maxWeight = 200;
+    private Integer maxWeight;
 
     @Column(name = "FREE_WEIGHT")
-    private Integer freeWeight = 200;
+    private Integer freeWeight;
 
     @Column(name = "TRIP_STATUS")
     @Enumerated(EnumType.STRING)
     private TripStatus tripStatus;
+
+    @Column(name = "FLIGHT_STATUS")
+    @Enumerated(EnumType.STRING)
+    private FlightStatus flightStatus;
 
     @Column(name = "START_TRIP")
     private Date startTrip;

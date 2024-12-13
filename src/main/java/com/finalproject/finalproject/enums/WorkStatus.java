@@ -1,8 +1,10 @@
 package com.finalproject.finalproject.enums;
 
 public enum WorkStatus {
-    ACTIVE("ACTIVE"),
-    INACTIVE("INACTIVE");
+    WORKING("ACTIVE"),
+    INACTIVE("INACTIVE"),
+    WAITING_FLIGHT("WAITING_FLIGHT");
+
 
     private String name;
 

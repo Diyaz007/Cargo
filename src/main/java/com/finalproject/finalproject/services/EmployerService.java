@@ -28,7 +28,7 @@ public class EmployerService {
         Employer employer = new Employer();
         employer.setUserId(user.get());
         employer.setTripStatus(TripStatus.WAIT);
-        employer.setWorkStatus(WorkStatus.ACTIVE);
+        employer.setWorkStatus(WorkStatus.WAITING_FLIGHT);
         Users user1 = user.get();
         user1.setRole(Roles.EMPLOYER);
         usersService.updateUser(user1);
@@ -45,16 +45,17 @@ public class EmployerService {
             throw new SignUpException("Delete Employer Error",errors);
         }
     }
-    public Employer updateEmployer(Long id, TripStatus tripStatus) {
+    public Employer updateEmployer(Employer employer) {
         try {
-            Employer employer = employerRepository.findById(id).get();
-            employer.setTripStatus(tripStatus);
             return employerRepository.save(employer);
         }catch (Exception e){
             HashMap<String,Integer> errors = new HashMap<>();
             errors.put("Employer not found",404);
             throw new SignUpException("Update Employer Error",errors);
         }
+    }
+    public Optional<Employer> findEmployerById(Long id) {
+        return employerRepository.findById(id);
     }
 
 }

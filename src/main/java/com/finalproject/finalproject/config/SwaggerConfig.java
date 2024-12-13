@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Configuration;
                 description = "API системы лояльности",
                 version = "1.0.0",
                 contact = @Contact(
-                        name = "Struchkov Mark",
-                        email = "mark@struchkov.dev",
-                        url = "https://mark.struchkov.dev"
+                        name = "Diyaz Turganaliev",
+                        email = "diyaz18.08@gmail.com",
+                        url = "https://youtu.be/kPa7bsKwL-c?si=Wja8Isea9_JCBKrE"
                 )
         )
 )

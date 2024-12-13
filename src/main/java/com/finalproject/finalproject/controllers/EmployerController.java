@@ -35,7 +35,7 @@ public class EmployerController {
                errors.put("not found",404);
                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
            }
-           if(users.getRole() != Roles.MANAGER) {
+           if(users.getRole() != Roles.MANAGER && users.getRole() != Roles.ADMIN) {
                errors.put("access denied",403);
                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errors);
            }
@@ -51,7 +51,7 @@ public class EmployerController {
         try {
             Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
             Users users = usersService.findByEmail(authentication.getName());
-            if(users.getRole() != Roles.MANAGER) {
+            if(users.getRole() != Roles.MANAGER && users.getRole() != Roles.ADMIN) {
                 errors.put("access denied",403);
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errors);
             }
@@ -59,23 +59,6 @@ public class EmployerController {
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (SignUpException e){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
-        }
-    }
-
-    @PutMapping("/trip-status-update")
-    public ResponseEntity<Object> updateTripStatus(@RequestBody UpdateTripStatus updateTripStatus) {
-        Map<String,Integer> errors = new HashMap<>();
-        try {
-            Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
-            Users users = usersService.findByEmail(authentication.getName());
-            if(users.getRole() != Roles.MANAGER && users.getRole() != Roles.EMPLOYER) {
-                errors.put("access denied",403);
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errors);
-            }
-            employerService.updateEmployer(updateTripStatus.getUserId(), updateTripStatus.getTripStatus());
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (SignUpException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
         }
     }
 

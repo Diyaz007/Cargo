@@ -14,8 +14,8 @@ public class Products {
     @SequenceGenerator(name = "product_id_seq", sequenceName = "product_id_seq", allocationSize = 1)
     private Integer id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(unique = true, nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     private Users userId;
 
     @ManyToOne(fetch = FetchType.EAGER)

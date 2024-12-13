@@ -3,20 +3,20 @@ package com.finalproject.finalproject.dto;
 import com.finalproject.finalproject.enums.TripStatus;
 
 public class UpdateTripStatus {
-    private int userId;
+    private Long flightsID;
     private TripStatus tripStatus;
 
-    public UpdateTripStatus(int userId, TripStatus tripStatus) {
-        this.userId = userId;
+    public UpdateTripStatus(Long flightsID, TripStatus tripStatus) {
+        this.flightsID = flightsID;
         this.tripStatus = tripStatus;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getFlightsID() {
+        return flightsID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setFlightsID(Long flightsID) {
+        this.flightsID = flightsID;
     }
 
     public TripStatus getTripStatus() {

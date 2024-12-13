@@ -21,6 +21,6 @@ public class History {
     @JoinColumn(name = "FLIGHTS")
     private Flights flights;
 
-    @Column(name = "DATE")
-    private Date date;
+    @Column(name = "FINISHED_DATE")
+    private Date finishedDate;
 }

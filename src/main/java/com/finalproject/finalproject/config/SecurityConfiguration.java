@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session management
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/**","/api/v1/**","/swagger-ui/**","/v3/api-docs").permitAll()
-                        .requestMatchers("/admin/**","/api/v1/employer/**").authenticated()
+                        .requestMatchers("/admin/**","/api/v1/employer/**","/api/v1/flights/**","/api/v1/product/**","/api/v1/users/**").authenticated()
                         .anyRequest().authenticated()// Require authentication for all other requests
                 )
                 .authenticationProvider(authenticationProvider) // Set the authentication provider
