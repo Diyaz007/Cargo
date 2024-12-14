@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -70,5 +71,11 @@ public class FlightsService {
             errors.put("Flight not found",404);
             throw new SignUpException("Update Flight Error",errors);
         }
+    }
+    public List<Flights> getAllFlights() {
+        return flightsRepository.findAll();
+    }
+    public List<Flights> getFlightsByFlightStatus(FlightStatus flightStatus) {
+        return flightsRepository.getFlightsByFlightStatus(flightStatus);
     }
 }

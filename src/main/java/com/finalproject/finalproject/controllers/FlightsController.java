@@ -1,6 +1,7 @@
 package com.finalproject.finalproject.controllers;
 
 import com.finalproject.finalproject.Exceptions.SignUpException;
+import com.finalproject.finalproject.dto.FlightsByFlightStatusRequest;
 import com.finalproject.finalproject.dto.FlightsResponse;
 import com.finalproject.finalproject.dto.UpdateTripStatus;
 import com.finalproject.finalproject.entity.*;
@@ -100,6 +101,8 @@ public class FlightsController {
             Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
             Users users = usersService.findByEmail(authentication.getName());
             if(users.getRole() != Roles.MANAGER && users.getRole() != Roles.ADMIN) {
+                Map<String,Integer> errors = new HashMap<>();
+                errors.put("access denied",403);
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
             List<History> histories = historyService.findAll();
@@ -108,5 +111,32 @@ public class FlightsController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @GetMapping("/all")
+    public ResponseEntity<List<Flights>> allFlights() {
+        try {
+            Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+            Users users = usersService.findByEmail(authentication.getName());
+            if(users.getRole() != Roles.MANAGER && users.getRole() != Roles.ADMIN) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+            List<Flights> flights = flightsService.getAllFlights();
+            return ResponseEntity.ok(flights);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping("/allByStatus")
+    public ResponseEntity<List<Flights>> allFlightsByStatus(@RequestBody FlightsByFlightStatusRequest request) {
+        try {
+            Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+            Users users = usersService.findByEmail(authentication.getName());
+            if(users.getRole() != Roles.MANAGER && users.getRole() != Roles.ADMIN) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+            List<Flights> flights = flightsService.getFlightsByFlightStatus(request.getFlightStatus());
+            return ResponseEntity.ok(flights);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
