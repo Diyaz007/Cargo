@@ -22,11 +22,21 @@ public class Flights {
     @JoinColumn(unique = true, nullable = false)
     private Employer employerId;
 
-    @Column(name = "MAX_WEIGHT")
-    private Integer maxWeight;
+    @Column(name = "LENGTH")
+    private Integer length;
 
-    @Column(name = "FREE_WEIGHT")
-    private Integer freeWeight;
+    @Column(name = "WIDTH")
+    private Integer width;
+
+    @Column(name = "HEIGHT")
+    private Integer height;
+
+    @Column(name = "MAX_VOLUME")
+    private Integer maxVolume;
+
+    @Column(name = "FREE_VOLUME")
+    private Integer freeVolume;
+
 
     @Column(name = "TRIP_STATUS")
     @Enumerated(EnumType.STRING)

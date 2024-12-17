@@ -45,10 +45,8 @@ public class ProductController {
                 errors.put("access denied",403);
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errors);
             }
-            Products products = new Products();
-            products.setUserId(users);
-            products.setWeight(productRequest.getWeight());
-            return ResponseEntity.status(HttpStatus.CREATED).body(productService.addProduct(products));
+            Products product = productService.addProduct(productRequest,users);
+            return ResponseEntity.status(HttpStatus.CREATED).body(product);
         }catch (SignUpException e){
             HashMap<String,Integer> errors = (HashMap<String, Integer>) e.getErrors();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);

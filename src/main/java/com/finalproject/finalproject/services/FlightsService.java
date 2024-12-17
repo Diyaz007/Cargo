@@ -34,8 +34,11 @@ public class FlightsService {
         }
         Flights newFlight = new Flights();
         newFlight.setEmployerId(employer.get());
-        newFlight.setMaxWeight(flight.getMaxWeight());
-        newFlight.setFreeWeight(0);
+        newFlight.setLength(flight.getLength());
+        newFlight.setWidth(flight.getWidth());
+        newFlight.setHeight(flight.getHeight());
+        newFlight.setMaxVolume(flight.getHeight()*flight.getWidth()*flight.getLength());
+        newFlight.setFreeVolume(0);
         newFlight.setStartTrip(new Date());
         newFlight.setEndTrip(null);
         newFlight.setFlightStatus(FlightStatus.NEW);

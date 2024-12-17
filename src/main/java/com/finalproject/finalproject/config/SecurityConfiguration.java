@@ -48,8 +48,8 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:8080")); // Define allowed origins
-        configuration.setAllowedMethods(List.of("GET", "POST")); // Define allowed HTTP methods
+        configuration.setAllowedOrigins(List.of("*")); // Define allowed origins
+        configuration.setAllowedMethods(List.of("GET", "POST","DELETE","PUT")); // Define allowed HTTP methods
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Define allowed headers
         configuration.setAllowCredentials(true); // Allow credentials if needed
 

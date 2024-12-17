@@ -2,8 +2,9 @@ package com.finalproject.finalproject.dto;
 
 public class FlightsResponse {
     private Long employerId;
-    private Integer maxWeight;
-
+    private Integer length;
+    private Integer width;
+    private Integer height;
 
     public Long getEmployerId() {
         return employerId;
@@ -13,12 +14,27 @@ public class FlightsResponse {
         this.employerId = employerId;
     }
 
-    public Integer getMaxWeight() {
-        return maxWeight;
+    public Integer getLength() {
+        return length;
     }
 
-    public void setMaxWeight(Integer maxWeight) {
-        this.maxWeight = maxWeight;
+    public void setLength(Integer length) {
+        this.length = length;
     }
 
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
 }

@@ -22,6 +22,16 @@ public class Products {
     @JoinColumn
     private Flights flights;
 
-    @Column(name = "WEIGHT")
-    private Integer weight;
+    @Column(name = "LENGTH")
+    private Integer length;
+
+    @Column(name = "WIDTH")
+    private Integer width;
+
+    @Column(name = "HEIGHT")
+    private Integer height;
+
+    public Integer getVolume(){
+        return length * width * height;
+    }
 }
